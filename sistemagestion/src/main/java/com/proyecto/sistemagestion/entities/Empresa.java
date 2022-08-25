@@ -17,7 +17,7 @@ public class Empresa {
     private String nit;
 
     public Empresa() {
-    }
+    };
 
     public Empresa(String nombre, String direccion, String telefono, String nit) {
         this.nombre = nombre;
