@@ -1,11 +1,23 @@
 package com.proyecto.sistemagestion.entities;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="Empresa")
 public class Empresa {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String nombre;
     private String direccion;
     private String telefono;
     private String nit;
+
+    public Empresa() {
+    };
 
     public Empresa(String nombre, String direccion, String telefono, String nit) {
         this.nombre = nombre;
@@ -13,6 +25,10 @@ public class Empresa {
         this.telefono = telefono;
         this.nit = nit;
     }
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getNombre() {
         return nombre;
