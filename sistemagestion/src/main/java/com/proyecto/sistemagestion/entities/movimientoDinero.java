@@ -2,6 +2,7 @@ package com.proyecto.sistemagestion.entities;
 
 import javax.persistence.*;
 @Entity
+@Table(name="movimientoDinero")
 public class movimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -9,6 +10,7 @@ public class movimientoDinero {
     private double monto;
     private String concepto;
     @ManyToOne
+    @JoinColumn(name="usuario_id")
     private Empleado usuario;
 
     public movimientoDinero(){
