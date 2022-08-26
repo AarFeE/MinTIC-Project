@@ -1,22 +1,39 @@
 package com.proyecto.sistemagestion.entities;
 
+import javax.persistence.*;
+@Entity
 public class movimientoDinero {
-
-    private Double monto;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private double monto;
     private String concepto;
-    private String usuario;
+    @ManyToOne
+    private Empleado usuario;
 
-    public movimientoDinero(Double monto, String concepto, String usuario) {
+    public movimientoDinero(){
+
+    }
+
+    public movimientoDinero(double monto, String concepto, Empleado usuario) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
     }
 
-    public Double getMonto() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getMonto() {
         return monto;
     }
 
-    public void setMonto(Double monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 
@@ -28,8 +45,11 @@ public class movimientoDinero {
         this.concepto = concepto;
     }
 
-    public String getUsuario() {
+    public Empleado getUsuario() {
         return usuario;
     }
 
-}
+    public void setUsuario(Empleado usuario) {
+        this.usuario = usuario;
+    }
+    }
