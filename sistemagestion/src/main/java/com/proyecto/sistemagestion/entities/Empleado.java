@@ -1,13 +1,24 @@
 package com.proyecto.sistemagestion.entities;
 
-public class Empleado {
+import javax.persistence.*;
 
+@Entity
+@Table(name="Empleado")
+public class Empleado {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String nombre;
     private String correo;
-    private String empresa;
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private Empresa empresa;
     private String rol;
 
-    public Empleado(String nombre, String correo, String empresa, String rol) {
+    public Empleado() {
+    }
+
+    public Empleado(String nombre, String correo, Empresa empresa, String rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
@@ -30,11 +41,11 @@ public class Empleado {
         this.correo = correo;
     }
 
-    public String getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(String empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
