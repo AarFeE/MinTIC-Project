@@ -1,6 +1,8 @@
 package com.proyecto.sistemagestion.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+
 @Entity
 @Table(name="movimientoDinero")
 public class movimientoDinero {
@@ -12,15 +14,19 @@ public class movimientoDinero {
     @ManyToOne
     @JoinColumn(name="usuario_id")
     private Empleado usuario;
+    private LocalDate fechaCreacion;
+    private LocalDate fechaActualizacion;
 
     public movimientoDinero(){
 
     }
 
-    public movimientoDinero(double monto, String concepto, Empleado usuario) {
+    public movimientoDinero(double monto, String concepto,Empleado usuario, LocalDate fechaCreacion) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaCreacion;
     }
 
     public int getId() {
@@ -54,4 +60,16 @@ public class movimientoDinero {
     public void setUsuario(Empleado usuario) {
         this.usuario = usuario;
     }
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
     }
+
+    public LocalDate getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+}
