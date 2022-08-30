@@ -6,6 +6,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name="Empleado")
 public class Empleado {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -15,7 +17,6 @@ public class Empleado {
     @JoinColumn(name = "empresa_id")
     private Empresa empresa;
     private String rol;
-
     private LocalDate fechaCreacion;
     private LocalDate fechaActualizacion;
 
@@ -36,6 +37,9 @@ public class Empleado {
         this.fechaActualizacion = fechaActualizacion;
     }
 
+    public int getId() {return id; }
+
+    public void setId(int id) { this.id = id; }
     public String getNombre() {
         return nombre;
     }
