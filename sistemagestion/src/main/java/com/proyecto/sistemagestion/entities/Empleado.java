@@ -1,6 +1,7 @@
 package com.proyecto.sistemagestion.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Empleado")
@@ -15,14 +16,24 @@ public class Empleado {
     private Empresa empresa;
     private String rol;
 
+    private LocalDate fechaCreacion;
+    private LocalDate fechaActualizacion;
+
     public Empleado() {
     }
 
-    public Empleado(String nombre, String correo, Empresa empresa, String rol) {
+    public Empleado(LocalDate fechaCreacion, LocalDate fechaActualizacion) {
+        this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public Empleado(String nombre, String correo, Empresa empresa, String rol, LocalDate fechaCreacion, LocalDate fechaActualizacion) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaActualizacion = fechaActualizacion;
     }
 
     public String getNombre() {
@@ -56,5 +67,18 @@ public class Empleado {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public LocalDate getFechaActualizacion() {
+        return fechaActualizacion;
+    }
+
+    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
 
 }
