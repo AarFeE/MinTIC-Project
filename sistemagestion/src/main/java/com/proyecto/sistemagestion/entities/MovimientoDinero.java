@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name="movimientoDinero")
-public class movimientoDinero {
+public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -17,11 +17,11 @@ public class movimientoDinero {
     private LocalDate fechaCreacion;
     private LocalDate fechaActualizacion;
 
-    public movimientoDinero(){
+    public MovimientoDinero(){
 
     }
 
-    public movimientoDinero(double monto, String concepto,Empleado usuario, LocalDate fechaCreacion) {
+    public MovimientoDinero(double monto, String concepto, Empleado usuario, LocalDate fechaCreacion) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
