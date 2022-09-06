@@ -1,45 +1,56 @@
 package com.proyecto.sistemagestion.entities;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="Empleado")
+@EntityListeners(AuditingEntityListener.class)
 public class Empleado {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private String nombre;
+    @Column(unique = true,nullable = false)
     private String correo;
     @ManyToOne
-    @JoinColumn(name = "empresa_id")
+    @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
+    @Column(nullable = false)
     private String rol;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaActualizacion;
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime fechaActualizacion;
 
     public Empleado() {
     }
 
-    public Empleado(LocalDate fechaCreacion, LocalDate fechaActualizacion) {
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
-    }
-
-    public Empleado(String nombre, String correo, Empresa empresa, String rol, LocalDate fechaCreacion, LocalDate fechaActualizacion) {
+    public Empleado(String nombre, String correo, Empresa empresa, String rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaActualizacion;
+            }
+
+    public int getId() {
+        return id;
     }
 
-    public int getId() {return id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public void setId(int id) { this.id = id; }
     public String getNombre() {
         return nombre;
     }
@@ -72,17 +83,19 @@ public class Empleado {
         this.rol = rol;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public LocalDate getFechaActualizacion() {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
-
-
 }

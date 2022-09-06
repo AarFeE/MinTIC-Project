@@ -3,8 +3,10 @@ package com.proyecto.sistemagestion;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class}) //para que no pida el logueo
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@EnableJpaAuditing //para que no pida el logueo
 public class ProyectoSistemaDeGestionApplication {
 
 	public static void main(String[] args) {

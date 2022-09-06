@@ -1,33 +1,43 @@
 package com.proyecto.sistemagestion.entities;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="movimientoDinero")
+@EntityListeners(AuditingEntityListener.class)
 public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(nullable = false)
     private double monto;
+    @Column(nullable = false)
     private String concepto;
     @ManyToOne
-    @JoinColumn(name="usuario_id")
+    @JoinColumn(name="usuario_id",nullable = false)
     private Empleado usuario;
-    private LocalDate fechaCreacion;
-    private LocalDate fechaActualizacion;
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime fechaCreacion;
+    @LastModifiedDate
+    @Column(nullable = false)
+    private LocalDateTime fechaActualizacion;
 
     public MovimientoDinero(){
 
     }
 
-    public MovimientoDinero(double monto, String concepto, Empleado usuario, LocalDate fechaCreacion) {
+    public MovimientoDinero(double monto, String concepto, Empleado usuario) {
         this.monto = monto;
         this.concepto = concepto;
         this.usuario = usuario;
-        this.fechaCreacion = fechaCreacion;
-        this.fechaActualizacion = fechaCreacion;
-    }
+            }
 
     public int getId() {
         return id;
@@ -61,15 +71,19 @@ public class MovimientoDinero {
         this.usuario = usuario;
     }
 
-    public LocalDate getFechaCreacion() {
+    public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public LocalDate getFechaActualizacion() {
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public LocalDateTime getFechaActualizacion() {
         return fechaActualizacion;
     }
 
-    public void setFechaActualizacion(LocalDate fechaActualizacion) {
+    public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
         this.fechaActualizacion = fechaActualizacion;
     }
 }
