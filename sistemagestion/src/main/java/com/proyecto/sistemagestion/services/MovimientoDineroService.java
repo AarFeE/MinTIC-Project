@@ -36,10 +36,18 @@ public class MovimientoDineroService {
 
     public boolean deleteMovimientoById(Integer id){
         movimientoRepository.deleteById(id);
-        if(getMovimientoById(id) != null){
-            return false;
-        } else{
+        if(movimientoRepository.findById(id)!= null){
             return true;
+        } else{
+            return false;
         }
     }
+
+    public ArrayList<MovimientoDinero> getMovimientosByEmpleado(Integer id){
+        return movimientoRepository.findByEmpleado(id);
+    }
+    public ArrayList<MovimientoDinero> getMovimientosByEmpresa(Integer id){
+        return movimientoRepository.findByEmpresa(id);
+    }
+
 }

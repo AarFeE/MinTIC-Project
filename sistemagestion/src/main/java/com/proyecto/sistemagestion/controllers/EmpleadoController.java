@@ -14,22 +14,22 @@ public class EmpleadoController {
     @Autowired
     EmpleadoService empleadoService;
 
-    @GetMapping("/empleados")
+    @GetMapping("/users")
     public List<Empleado> getEmpleado(){
         return  this.empleadoService.getAllEmpleados();
     }
 
-    @PostMapping("/empleados")
+    @PostMapping("/users")
     public boolean saveEmpleado(@RequestBody Empleado empleado){
         return this.empleadoService.saveOrUpdateEmpleado(empleado);
     }
 
-    @GetMapping("/empleados/{id}")
+    @GetMapping("/users/{id}")
     public Empleado getEmpleadoID(@PathVariable("id") Integer id){
         return this.empleadoService.getEmpleadoById(id);
     }
 
-    @PatchMapping("/empleados/{id}")
+    @PatchMapping("/users/{id}")
     public boolean editEmpleado(@PathVariable("id") Integer id, @RequestBody Empleado empleado){
         Empleado Empl = this.empleadoService.getEmpleadoById(id);
         Empl.setNombre(empleado.getNombre());
@@ -38,7 +38,7 @@ public class EmpleadoController {
         return this.empleadoService.saveOrUpdateEmpleado(Empl);
     }
 
-    @DeleteMapping("/empleados/{id}")
+    @DeleteMapping("/users/{id}")
     public String deleteEmpleado (@PathVariable("id") Integer id){
         boolean resp = this.empleadoService.deleteEmpleado(id);
         if (resp == true){
