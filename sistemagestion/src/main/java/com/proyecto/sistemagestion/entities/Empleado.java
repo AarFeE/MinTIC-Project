@@ -1,5 +1,6 @@
 package com.proyecto.sistemagestion.entities;
 
+import com.proyecto.sistemagestion.enums.Enum_Rol;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -24,8 +25,9 @@ public class Empleado {
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String rol;
+    private Enum_Rol rol;
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
@@ -36,7 +38,7 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String nombre, String correo, Empresa empresa, String rol) {
+    public Empleado(String nombre, String correo, Empresa empresa, Enum_Rol rol) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
@@ -75,11 +77,11 @@ public class Empleado {
         this.empresa = empresa;
     }
 
-    public String getRol() {
+    public Enum_Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Enum_Rol rol) {
         this.rol = rol;
     }
 
