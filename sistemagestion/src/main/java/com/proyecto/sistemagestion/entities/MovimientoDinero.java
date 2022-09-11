@@ -1,6 +1,5 @@
 package com.proyecto.sistemagestion.entities;
 
-import com.proyecto.sistemagestion.enums.Enum_Rol;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -10,24 +9,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="Empleado")
+@Table(name="movimientoDinero")
 @EntityListeners(AuditingEntityListener.class)
-public class Empleado {
-
-
+public class MovimientoDinero {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(nullable = false)
-    private String nombre;
-    @Column(unique = true,nullable = false)
-    private String correo;
-    @ManyToOne
-    @JoinColumn(name = "empresa_id", nullable = false)
-    private Empresa empresa;
-    @Enumerated(EnumType.STRING)
+    private double monto;
     @Column(nullable = false)
-    private Enum_Rol rol;
+    private String concepto;
+    @ManyToOne
+    @JoinColumn(name="usuario_id",nullable = false)
+    private Empleado usuario;
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
@@ -35,14 +29,14 @@ public class Empleado {
     @Column(nullable = false)
     private LocalDateTime fechaActualizacion;
 
-    public Empleado() {
+    public MovimientoDinero(){
+
     }
 
-    public Empleado(String nombre, String correo, Empresa empresa, Enum_Rol rol) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.empresa = empresa;
-        this.rol = rol;
+    public MovimientoDinero(double monto, String concepto, Empleado usuario) {
+        this.monto = monto;
+        this.concepto = concepto;
+        this.usuario = usuario;
             }
 
     public int getId() {
@@ -53,36 +47,28 @@ public class Empleado {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public double getMonto() {
+        return monto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setMonto(double monto) {
+        this.monto = monto;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getConcepto() {
+        return concepto;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setConcepto(String concepto) {
+        this.concepto = concepto;
     }
 
-    public Empresa getEmpresa() {
-        return empresa;
+    public Empleado getUsuario() {
+        return usuario;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
-
-    public Enum_Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Enum_Rol rol) {
-        this.rol = rol;
+    public void setUsuario(Empleado usuario) {
+        this.usuario = usuario;
     }
 
     public LocalDateTime getFechaCreacion() {
