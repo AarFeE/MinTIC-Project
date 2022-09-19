@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c76afac88a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{newUsuarioPage.css}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="Rectangle-1">
+        <a th:href="@{/}"><img class="logo-1" src="../src/logorecortada.png" alt=""></a>
+        <nav>
+            <label for="touch"><span><img class="login-1" src="../src/usuarios.png" alt=""></span></label>
+            <input type="checkbox" id="touch"> 
+            <ul class="slide">
+                <li class="nombreUsuario">Jhon Penon</li>
+                <li><a href="#"><button class="salir">Salir</button></a></li> 
+            </ul>
+        </nav>
+    </header>
+    <a href="#" id="menu" class="fa-solid fa-bars"></a>
+    <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Usuarios</span></h2>
+    <div class="Rectangle-2">
+        <form class="form-1" action="">
+            <p class="Text-1">Nuevo </span> <span style="color: #04b593;"> Usuario</span></p>
+            <br>
+            <p class="Text-2">Nombre :</p>
+            <input class="Input-1" type="text" name="nombre">
+            <br class="br-1">
+            <br>
+            <p class="Text-3">Correo :</p>
+            <input class="Input-2" type="email" name="correo">
+            <br class="br-2">
+            <br>
+            <label class="Text-4">Concepto :</label>
+            <select class="Input-3" type="text" name="concepto">
+                <option value="Empleado">Empleado</option>
+                <option value="Admin">Admin</option>
+            </select>
+            <br>
+            
+            <input class="bto-2" type="submit" value="Crear movimiento">
+        </form>
+    </div>
+    <footer class="Rectangle-3">
+        <div class="box">
+            <a href="#" class="fa fa-facebook" ></a>
+            <a href="#" class="fa fa-github"></a>
+            <a href="#" class="fa fa-whatsapp"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-telegram"></a>
+        </div>
+    </footer>
+</body>
+</html>
