@@ -98,6 +98,10 @@ backdrop-filter: blur(1px);
 }
 
 
+.op-1{
+    display: flex;
+}
+
 #menu{
     font-size: 35px;
     margin: auto;
@@ -105,8 +109,17 @@ backdrop-filter: blur(1px);
     margin-top: 1%;
     margin-left: 3%;
     color: #1f4e77;
-    display: inline-flex
+    display: inline-flex;
+}
 
+#back{
+    font-size: 35px;
+    margin: auto;
+    text-decoration: none;
+    color: #1f4e77;
+    display: inline-flex;
+    margin-top: 1%;
+    margin-left: 85vw;
 }
 
 h2{

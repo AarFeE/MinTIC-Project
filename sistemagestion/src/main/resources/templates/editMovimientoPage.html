@@ -24,7 +24,10 @@
             </ul>
         </nav>
     </header>
-    <a href="#" id="menu" class="fa-solid fa-bars"></a>
+    <div class="op-1">
+        <a href="#" id="menu" class="fa-solid fa-bars"></a>
+        <a th:href="@{/movimientos}" class="fa-solid fa-arrow-left" id="back"></a>
+    </div>
     <h2>Sistema de gestión de <br> <span style="color: #04b593;"> ingresos y gastos</span></h2>
     <div class="Rectangle-2">
         <form th:action="@{/actualizarmovimiento}" th:object="${movement}" method="post" class="form-1">
