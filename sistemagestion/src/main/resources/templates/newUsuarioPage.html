@@ -32,7 +32,10 @@
             </ul>
         </nav>
     </header>
-    <a href="#" id="menu" class="fa-solid fa-bars"></a>
+    <div class="op-1">
+        <a href="#" id="menu" class="fa-solid fa-bars"></a>
+        <a th:href="@{/usuarios}" class="fa-solid fa-arrow-left" id="back"></a>
+    </div>
     <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Usuarios</span></h2>
     <div class="Rectangle-2">
         <form th:action="@{/guardarusuario}" th:object="${user}" method="post" class="form-1">
