@@ -21,7 +21,6 @@ body {
     padding-top: 5%;
     padding-right: auto;
     padding-left: 5%;
-
 }
 
 .login-1{
@@ -91,12 +90,12 @@ backdrop-filter: blur(1px);
 }
 
 /*funcionalidades*/
-#touch {position: absolute; opacity: 0; height: 0;}   
+#touch {position: absolute; opacity: 0; height: 0;}
 
 #touch:checked + .slide {
     height: 7.8vw;
     box-shadow: 0 0.26vw 0.6vw 0.2vw rgb(0 0 0 / 35%);
-} 
+}
 
 
 #menu{
@@ -134,8 +133,15 @@ h2{
     box-shadow: 0px 16px 24px -3px rgba(0,0,0,0.39);
 }
 
+br{
+    display: block;
+    content: "";
+    margin-top: 1vw;
+}
+
 
 .Text-1{
+    margin: 1vw auto 1.2vw;
     text-align: center;
     color: #a0a0a0;
     font-size: 2vw;
@@ -145,27 +151,31 @@ h2{
     color: #a0a0a0;
     font-size: 2vw;
     margin-left: 2vw;
+    margin-top: -2vw;
     display: inline;
 }
 
 .Input-1{
     width: 40%;
+    padding: 0.3vw 0.3vw;
     border-radius:0.75vw;
     border: solid;
     border-color: #a0a0a0;
-    margin-left: 10%;
+    margin-left: 10.5%;
     margin-right: 10% ;
-    font-size: 1.5vw;
+    font-size: 1vw;
 }
 
 .Text-3{
+    vertical-align: middle;
     color: #a0a0a0;
     font-size: 2vw;
     margin-left: 1.5vw;
-    display: inline;
 }
 
 .Input-2{
+    vertical-align: middle;
+    padding: 0.3vw 0.3vw;
     border-radius:10px;
     border: solid;
     border-color: #a0a0a0;
@@ -173,7 +183,24 @@ h2{
     width: 40%;
     height: 3.7vw;
     resize: none;
-    font-size: 1.5vw;
+    font-size: 1vw;
+}
+
+.Text-5{
+    color: #a0a0a0;
+    font-size: 1.75vw;
+    margin-left: 2vw;
+    display: inline;
+}
+
+.Input-4{
+    width: 42%;
+    padding: 0.3vw 0.3vw;
+    border-radius:0.75vw;
+    border: solid;
+    border-color: #a0a0a0;
+    margin-left: 6.5%;
+    font-size: 1vw;
 }
 
 
@@ -185,7 +212,7 @@ h2{
     height: 2vw;
     background-color: #05b593;
     color: #fff;
-    margin-top: 5%;
+    margin-top: 4%;
     margin-left: 38%;
     margin-bottom: 3%;
     border: none ;
@@ -311,10 +338,10 @@ h2{
     .Rectangle-3{
         display: none;
     }
-    
+
 }
 
-@media (max-width: 800px){
+/* @media (max-width: 800px){
     .Rectangle-1{
         height: 20vw;
     }
@@ -394,5 +421,5 @@ h2{
     .Rectangle-3{
         display: none;
     }
-    
-}
+
+} */

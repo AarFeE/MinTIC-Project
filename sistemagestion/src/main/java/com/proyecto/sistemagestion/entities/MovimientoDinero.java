@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="movimientoDinero")
+@Table(name="Movimientos")
 @EntityListeners(AuditingEntityListener.class)
 public class MovimientoDinero {
     @Id

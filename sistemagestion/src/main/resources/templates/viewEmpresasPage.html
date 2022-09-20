@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de empresas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Listado de empresas <a th:href="@{/AgregarEmpresa}" class="btn btn-success" role="button">Agregar</a></h1></br>
+        <table class="table table-bordered">
+            <tr>
+                <th style="text-align:center">ID</th>
+                <th style="text-align:center">Nombre</th>
+                <th style="text-align:center">Direccion</th>
+                <th style="text-align:center">Telefono</th>
+                <th style="text-align:center">NIT</th>
+                <th style="text-align:center">Creacion</th>
+                <th style="text-align:center">Actualizacion</th>
+                <th style="text-align:center">Empleados</th>
+                <th style="text-align:center">Editar</th>
+                <th style="text-align:center">Eliminar</th>
+
+            </tr>
+
+            <tr  style="text-align:center" th:each="empresa : ${emplist}">
+                <td th:text="${empresa.id}"></td>
+                <td th:text="${empresa.nombre}"></td>
+                <td th:text="${empresa.direccion}"></td>
+                <td th:text="${empresa.telefono}"></td>
+                <td th:text="${empresa.nit}"></td>
+                <td th:text="${#temporals.format(empresa.fechaCreacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+                <td th:text="${#temporals.format(empresa.fechaActualizacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+                <td><a th:href="@{/Empresa/{id}/Empleados(id=${empresa.id})}" class="btn btn-info" role="button">Empleados</a></td>
+                <td><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}" class="btn btn-warning" role="button">Editar</a></td>
+                <td><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}" class="btn btn-danger" role="button">Eliminar</a></td>
+            </tr>
+        </table>
+    </div>
+
+<script th:inline="javascript">
+    window.onload = function(){
+        var msg = [[${msg}]];
+        if(msg == "saveOK"){
+            Command : toastr["success"]("La empresa fue guardada correctamente")
+        } else if(msg == "updtOK"){
+            Command : toastr["success"]("La empresa fue actualizada correctamente")
+        } else if(msg == "dltOK"){
+            Command : toastr["warning"]("La empresa fue eliminada correctamente")
+        } else if(msg == "dltERROR"){
+            Command : toastr["error"]("Hubo un problema al tratar de eliminar la empresa")
+        }
+        toastr.options = {
+            "positionClass" : "toastr-top-right",
+            "showMethod" : "fadeIn",
+            "showDuration" : "250",
+            "hideMethod" : "fadeOut",
+        }
+    }
+</script>
+
+</body>
+</html>
