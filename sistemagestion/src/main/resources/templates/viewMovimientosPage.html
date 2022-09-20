@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de movimientos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Listado de movimientos <a th:href="@{/nuevomovimiento}" class="btn btn-success" role="button">Agregar</a></h1></br>
+        <table class="table table-bordered">
+            <tr>
+                <th>ID</th>
+                <th>Monto</th>
+                <th>Concepto</th>
+                <th>Usuario</th>
+                <th>Creacion</th>
+                <th>Actualizacion</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+
+            <tr th:each="movement : ${movementslist}">
+                <td th:text="${movement.id}"></td>
+                <td th:text="${#numbers.formatCurrency(movement.monto)}"></td>
+                <td th:text="${movement.concepto}"></td>
+                <td th:text="${movement.usuario.nombre}"></td>
+                <td th:text="${#temporals.format(movement.fechaCreacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+                <td th:text="${#temporals.format(movement.fechaActualizacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+                <td><a th:href="@{/editarmovimiento/{id}(id=${movement.id})}" class="btn btn-warning" role="button">Editar</a></td>
+                <td><a th:href="@{/eliminarmovimiento/{id}(id=${movement.id})}" class="btn btn-danger" role="button">Eliminar</a></td>
+            </tr>
+        </table>
+
+        <nav aria-label="Seleccion de pagina">
+            <ul class="pagination mt-4">
+                <li th:each="page, status: ${pages}" class="page-item">
+                    <a th:href="@{/movimientos/(page=${status.index})}" class="page-link" th:text="${status.index}+1"></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+<script th:inline="javascript">
+    window.onload = function(){
+        var msg = [[${msg}]];
+        if(msg == "saveOK"){
+            Command : toastr["success"]("El movimiento fue guardado correctamente")
+        } else if(msg == "updtOK"){
+            Command : toastr["success"]("El movimiento fue actualizado correctamente")
+        } else if(msg == "dltOK"){
+            Command : toastr["warning"]("El movimiento fue eliminado correctamente")
+        } else if(msg == "dltERROR"){
+            Command : toastr["error"]("Hubo un problema al tratar de eliminar el movimiento")
+        }
+        toastr.options = {
+            "positionClass" : "toastr-top-right",
+            "showMethod" : "fadeIn",
+            "showDuration" : "250",
+            "hideMethod" : "fadeOut",
+        }
+    }
+</script>
+
+</body>
+</html>

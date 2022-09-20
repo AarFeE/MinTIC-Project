@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <link rel="stylesheet" th:href="@{newUsuarioPage.css}">
+    <link rel="stylesheet" th:href="@{/newUsuarioPage.css}">
 
     <title>Document</title>
 </head>
@@ -35,9 +35,10 @@
     <a href="#" id="menu" class="fa-solid fa-bars"></a>
     <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Usuarios</span></h2>
     <div class="Rectangle-2">
-        <form th:action="@{/guardarusuario}" th:object="${user}" method="post" class="form-1">
-            <p class="Text-1">Nuevo </span> <span style="color: #04b593;"> Usuario</span></p>
+        <form th:action="@{/actualizarusuario}" th:object="${user}" method="post" class="form-1">
+            <p class="Text-1">Editar </span> <span style="color: #04b593;"> Usuario</span></p>
             <br>
+            <input type="text" th:field="*{id}" class="form-control" id="id" required="required" hidden readonly>
             <label class="Text-2" for="nombre">Nombre :</label>
             <input class="Input-1" type="text" th:field="*{nombre}" id="nombre" required="required">
             <br>
@@ -54,7 +55,7 @@
             <select class="Input-4" type="text" th:field="*{empresa}" id="empresa" required="required">
                 <option th:each="empresa : ${emplist}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
             </select>
-            <input class="bto-2" type="submit" value="Crear usuario">
+            <input class="bto-2" type="submit" value="Guardar usuario">
         </form>
     </div>
     <footer class="Rectangle-3">
@@ -69,22 +70,22 @@
     </footer>
 
     <script th:inline="javascript">
-    window.onload = function(){
-        var msg = [[${msg}]];
-        if(msg == "saveERROR"){
-            Command : toastr["error"]("Hubo un problema al tratar de guardar el empleado")
-        } else if(msg == "saveREPEAT"){
-            Command : toastr["warning"]("El empleado no pudo ser creado, debido a que el correo ingresado ya existe")
-        }
+        window.onload = function(){
+            var msg = [[${msg}]];
+            if(msg == "updtERROR"){
+                Command : toastr["error"]("Hubo un problema al tratar de actualizar el empleado")
+            } else if(msg == "updtREPEAT"){
+                Command : toastr["warning"]("El empleado no pudo ser actualizado, debido a que el correo ingresado ya existe")
+            }
 
-        toastr.options = {
-            "positionClass" : "toastr-top-right",
-            "showMethod" : "fadeIn",
-            "showDuration" : "250",
-            "hideMethod" : "fadeOut",
+            toastr.options = {
+                "positionClass" : "toastr-top-right",
+                "showMethod" : "fadeIn",
+                "showDuration" : "250",
+                "hideMethod" : "fadeOut",
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>

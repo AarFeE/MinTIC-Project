@@ -17,7 +17,6 @@ public class EmpresaService {
         List<Empresa> listaEmpresas = new ArrayList<>();
         empresaRepository.findAll().forEach(empresa -> listaEmpresas.add(empresa));
         return  listaEmpresas;
-
     }
 
     public Empresa getEmpresaById(Integer id){
@@ -31,10 +30,10 @@ public class EmpresaService {
     public boolean deleteEmpresa (Integer id){
         empresaRepository.deleteById(id);
         if(getEmpresaById(id)!=null){
-            return false;
+            return true;
 
         }
-        return true;
+        return false;
 
     }
 
