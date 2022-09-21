@@ -21,8 +21,8 @@
             <label for="touch"><span><img class="login-1" src="../src/usuarios.png" alt=""></span></label>
             <input type="checkbox" id="touch"> 
             <ul class="slide">
-                <li class="nombreUsuario">Jhon Penon</li>
-                <li><a href="#"><button class="salir">Salir</button></a></li> 
+                <li class="nombreUsuario">[[${#httpServletRequest.remoteUser}]]</li>
+                <li><a th:href="@{/logout}"><button class="salir">Salir</button></a></li>
             </ul>
         </nav>
     </header>

@@ -5,6 +5,9 @@ import com.proyecto.sistemagestion.entities.Empresa;
 import com.proyecto.sistemagestion.services.EmpleadoService;
 import com.proyecto.sistemagestion.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +48,7 @@ public class EmpleadoController {
     @PostMapping("/guardarusuario")
     public String SaveUsuario(Empleado user, RedirectAttributes redirectAttributes){
         try{
+            user.setPassword(passwordEncoder().encode(user.getPassword()));
             if(empleadoService.saveOrUpdateEmpleado(user)==true){
                 redirectAttributes.addFlashAttribute("msg", "saveOK");
                 return "redirect:/usuarios";
@@ -71,6 +75,9 @@ public class EmpleadoController {
     @PostMapping("/actualizarusuario")
     public String UpdateUsuario(@ModelAttribute("emp") Empleado user, RedirectAttributes redirectAttributes) {
         try {
+            if(empleadoService.getEmpleadoById(user.getId()).getPassword().equals(user.getPassword())){
+                user.setPassword(passwordEncoder().encode(user.getPassword()));
+            }
             if (empleadoService.saveOrUpdateEmpleado(user) == true) {
                 redirectAttributes.addFlashAttribute("msg", "updtOK");
                 return "redirect:/usuarios";
@@ -93,6 +100,14 @@ public class EmpleadoController {
         }
         redirectAttributes.addFlashAttribute("msg", "dltEROR");
         return "redirect:/usuarios";
+    }
+
+
+
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 }

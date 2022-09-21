@@ -1,8 +1,8 @@
 package com.proyecto.sistemagestion.enums;
 
 public enum Enum_Rol {
-    OPERATIVO ("Operativo"),
-    ADMINISTRADOR ("Administrador");
+    ROLE_USER ("Operativo"),
+    ROLE_ADMIN ("Administrador");
 
     private String name;
     Enum_Rol(String name){

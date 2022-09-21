@@ -8,6 +8,8 @@ import com.proyecto.sistemagestion.services.MovimientoDineroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,9 +44,11 @@ public class MovimientoDineroController {
     @GetMapping("/nuevomovimiento")
     public String NewMovimientoPage(Model model, @ModelAttribute("msg") String msg){
         MovimientoDinero movimiento= new MovimientoDinero();
-        List<Empleado> userlist = empleadoService.getAllEmpleados();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String correo = auth.getName();
+        Integer id = movimientoDineroService.idByCorreo(correo);
         model.addAttribute("movimiento",movimiento);
-        model.addAttribute("userlist",userlist);
+        model.addAttribute("id",id);
         model.addAttribute("msg",msg);
         return "newMovimientoPage";
     }
@@ -68,8 +72,6 @@ public class MovimientoDineroController {
     @GetMapping("/editarmovimiento/{id}")
     public String EditMovimientoPage(Model model, @PathVariable Integer id, @ModelAttribute("msg") String msg){
         MovimientoDinero movement=movimientoDineroService.getMovimientoById(id);
-        List<Empleado> userlist = empleadoService.getAllEmpleados();
-        model.addAttribute("userlist",userlist);
         model.addAttribute("movement",movement);
         model.addAttribute("msg", msg);
         return "editMovimientoPage";
