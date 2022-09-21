@@ -22,6 +22,10 @@ public class Empleado {
     private String nombre;
     @Column(unique = true,nullable = false)
     private String correo;
+    @Column(nullable = false)
+    private String password = "";
+    @Column(nullable = false)
+    private Boolean estado = true;
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)
     private Empresa empresa;
@@ -38,12 +42,30 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(String nombre, String correo, Empresa empresa, Enum_Rol rol) {
+    public Empleado(String nombre, String correo, Empresa empresa, Enum_Rol rol, String password, Boolean estado) {
         this.nombre = nombre;
         this.correo = correo;
         this.empresa = empresa;
         this.rol = rol;
-            }
+        this.password = password;
+        this.estado = estado;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
 
     public int getId() {
         return id;

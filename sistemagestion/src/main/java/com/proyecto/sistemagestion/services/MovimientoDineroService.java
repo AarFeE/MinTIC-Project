@@ -43,6 +43,10 @@ public class MovimientoDineroService {
         }
     }
 
+    public Integer idByCorreo(String correo){
+        return movimientoRepository.idByCorreo(correo);
+    }
+
     public ArrayList<MovimientoDinero> getMovimientosByEmpleado(Integer id){
         return movimientoRepository.findByEmpleado(id);
     }
