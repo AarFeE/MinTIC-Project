@@ -29,13 +29,14 @@ public class SecConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/empresas/**",
-                        "/empleados/**", "/Empresa/**",
-                        "/editarmovimiento/**", "/actualizarmovimiento/**"
-                        ,"/eliminarmovimiento/**", "/usuarios",
-                        "/nuevousuario/**", "/guardarusuario/**",
-                        "/editarusuario/**", "/actualizarusuario/**",
-                        "/eliminarusuario").hasRole("ADMIN")
+                .antMatchers("/empresas/**", "/nuevaempresa/**",
+                        "/guardarempresa/**", "/editarempresa/**",
+                        "/actualizarempresa/**", "/eliminarempresa/**",
+                        "/usuarios/**", "/nuevousuario/**",
+                        "/guardarusuario/**", "/editarusuario/**",
+                        "/actualizarusuario/**", "/eliminarusuario/**",
+                        "/editarmovimiento/**", "/actualizarmovimiento/**",
+                        "/eliminarmovimiento/**").hasRole("ADMIN")
                 .antMatchers("/", "/movimientos/**",
                         "/nuevomovimiento/**", "/guardarmovimiento/**").hasAnyRole("ADMIN", "USER")
                 .and().formLogin().loginPage("/login")

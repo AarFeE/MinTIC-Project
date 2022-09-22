@@ -33,7 +33,6 @@ public class EmpleadoService {
 
     public boolean deleteEmpleado(Integer id){
         empleadoRepository.deleteById((id));
-
         if (empleadoRepository.findById(id) != null) {
             return true;
         }

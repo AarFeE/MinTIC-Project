@@ -3,6 +3,11 @@ body {
     margin: 0;
     font-family: 'Inter', sans-serif;
 }
+
+body #toast-container > div {
+  opacity: 0.9;
+}
+
 .Rectangle-1 {
     display: flex;
     width: 100%;
@@ -119,7 +124,7 @@ h2{
 .Rectangle-2{
     align-self: center;
     width: 47vw;
-    height: 23vw;
+    height: auto;
     background-color:#fff;
     margin-right: 25%;
     margin-left: 16%;
@@ -136,7 +141,7 @@ h2{
 br{
     display: block;
     content: "";
-    margin-top: 1vw;
+    margin-top: 0.6vw;
 }
 
 
@@ -146,9 +151,6 @@ br{
     color: #a0a0a0;
     font-size: 2vw;
 }
-
-
-
 
 .Text-2{
     color: #a0a0a0;

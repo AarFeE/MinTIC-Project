@@ -47,10 +47,19 @@
             <label class="Text-3" for="correo">Correo :</label>
             <input class="Input-2" type="email" th:field="*{correo}" id="correo" required="required">
             <br>
+            <label class="Text-6" for="password">Contraseña :</label>
+            <input class="Input-5" type="password" th:field="*{password}" id="password" required="required">
+            <br>
+            <label class="Text-4" for="estado">Estado :</label>
+            <select th:field="*{estado}" class="Input-6" type="text" id="estado" required="required">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+            </select>
+            <br>
             <label class="Text-4" for="rol">Rol :</label>
             <select th:field="*{rol}" class="Input-3" type="text" id="rol" required="required">
-                <option value="OPERATIVO">Operario</option>
-                <option value="ADMINISTRADOR">Administrador</option>
+                <option value="ROLE_USER">Operario</option>
+                <option value="ROLE_ADMIN">Administrador</option>
             </select>
             <br>
             <label class="Text-5" for="empresa">Empresa :</label>
@@ -72,22 +81,22 @@
     </footer>
 
     <script th:inline="javascript">
-    window.onload = function(){
-        var msg = [[${msg}]];
-        if(msg == "saveERROR"){
-            Command : toastr["error"]("Hubo un problema al tratar de guardar el empleado")
-        } else if(msg == "saveREPEAT"){
-            Command : toastr["warning"]("El empleado no pudo ser creado, debido a que el correo ingresado ya existe")
-        }
+        window.onload = function(){
+            var msg = [[${msg}]];
+            if(msg == "saveERROR"){
+                Command : toastr["error"]("Hubo un problema al tratar de guardar el empleado")
+            } else if(msg == "saveREPEAT"){
+                Command : toastr["warning"]("El empleado no pudo ser creado, debido a que el correo ingresado ya existe")
+            }
 
-        toastr.options = {
-            "positionClass" : "toastr-top-right",
-            "showMethod" : "fadeIn",
-            "showDuration" : "250",
-            "hideMethod" : "fadeOut",
+            toastr.options = {
+                "positionClass" : "toastr-top-right",
+                "showMethod" : "fadeIn",
+                "showDuration" : "250",
+                "hideMethod" : "fadeOut",
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
