@@ -14,7 +14,7 @@
 <body>
 
     <div class="container">
-        <h1>Listado de empresas <a th:href="@{/AgregarEmpresa}" class="btn btn-success" role="button">Agregar</a></h1></br>
+        <h1>Listado de empresas <a th:href="@{/nuevaempresa}" class="btn btn-success" role="button">Agregar</a></h1></br>
         <table class="table table-bordered">
             <tr>
                 <th style="text-align:center">ID</th>
@@ -39,8 +39,8 @@
                 <td th:text="${#temporals.format(empresa.fechaCreacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
                 <td th:text="${#temporals.format(empresa.fechaActualizacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
                 <td><a th:href="@{/Empresa/{id}/Empleados(id=${empresa.id})}" class="btn btn-info" role="button">Empleados</a></td>
-                <td><a th:href="@{/EditarEmpresa/{id}(id=${empresa.id})}" class="btn btn-warning" role="button">Editar</a></td>
-                <td><a th:href="@{/EliminarEmpresa/{id}(id=${empresa.id})}" class="btn btn-danger" role="button">Eliminar</a></td>
+                <td><a th:href="@{/editarempresa/{id}(id=${empresa.id})}" class="btn btn-warning" role="button">Editar</a></td>
+                <td><a th:href="@{/eliminarempresa/{id}(id=${empresa.id})}" class="btn btn-danger" role="button">Eliminar</a></td>
             </tr>
         </table>
     </div>

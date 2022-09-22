@@ -74,10 +74,10 @@ public class EmpleadoController {
 
     @PostMapping("/actualizarusuario")
     public String UpdateUsuario(@ModelAttribute("emp") Empleado user, RedirectAttributes redirectAttributes) {
+        if(!empleadoService.getEmpleadoById(user.getId()).getPassword().equals(user.getPassword())) {
+            user.setPassword(passwordEncoder().encode(user.getPassword()));
+        }
         try {
-            if(empleadoService.getEmpleadoById(user.getId()).getPassword().equals(user.getPassword())){
-                user.setPassword(passwordEncoder().encode(user.getPassword()));
-            }
             if (empleadoService.saveOrUpdateEmpleado(user) == true) {
                 redirectAttributes.addFlashAttribute("msg", "updtOK");
                 return "redirect:/usuarios";

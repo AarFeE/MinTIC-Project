@@ -130,14 +130,14 @@ backdrop-filter: blur(1px);
 h2{
     text-align: center;
     color: #a0a0a0;
-    margin-top: 0%;
+    margin-top: -1vw;
     display: block;
     font-size: 2vw;
 }
 .Rectangle-2{
     align-self: center;
     width: 47vw;
-    height: 23vw;
+    height: auto;
     background-color:#fff;
     margin-right: 25%;
     margin-left: 16%;
@@ -154,19 +154,19 @@ h2{
 br{
     display: block;
     content: "";
-    margin-top: 1vw;
+    margin-top: 0.2vh;
 }
 
 .Text-1{
     text-align: center;
     color: #a0a0a0;
-    font-size: 2vw;
-    margin: 1vw auto -0vw;
+    font-size: 1.5vw;
+    margin: 2% auto 1%;
 }
 
 .Text-2{
     color: #a0a0a0;
-    font-size: 1.75vw;
+    font-size: 1.3vw;
     margin-left: 2vw;
     display: inline;
     margin-bottom: 10vw;
@@ -185,7 +185,7 @@ br{
 
 .Text-3{
     color: #a0a0a0;
-    font-size: 1.75vw;
+    font-size: 1.3vw;
     margin-left: 2vw;
     display: inline;
 }
@@ -196,14 +196,14 @@ br{
     border-radius:0.75vw;
     border: solid;
     border-color: #a0a0a0;
-    margin-left: 12%;
+    margin-left: 11.7%;
     margin-right: 10% ;
     font-size: 1vw;
 }
 
 .Text-4{
     color: #a0a0a0;
-    font-size: 1.75vw;
+    font-size: 1.3vw;
     margin-left: 2vw;
     display: inline;
 }
@@ -214,14 +214,14 @@ br{
     border-radius:0.75vw;
     border: solid;
     border-color: #a0a0a0;
-    margin-left: 18.5%;
+    margin-left: 16.4%;
     margin-right: 10% ;
     font-size: 1vw;
 }
 
 .Text-5{
     color: #a0a0a0;
-    font-size: 1.75vw;
+    font-size: 1.3vw;
     margin-left: 2vw;
     display: inline;
 }
@@ -233,7 +233,42 @@ br{
     border: solid;
     border-color: #a0a0a0;
     margin-left: 9.2%;
+    margin-right: 10.2% ;
+    font-size: 1vw;
+}
+
+.Text-6{
+    color: #a0a0a0;
+    font-size: 1.3vw;
+    margin-left: 2vw;
+    display: inline;
+}
+
+.Input-5{
+    width: 40%;
+    padding: 0.3vw 0.3vw;
+    border-radius:0.75vw;
+    border: solid;
+    border-color: #a0a0a0;
+    margin-left: 5.6%;
     margin-right: 10% ;
+    font-size: 1vw;
+}
+
+.Text-7{
+    color: #a0a0a0;
+    font-size: 1.3vw;
+    margin-left: 2vw;
+    display: inline;
+}
+
+.Input-6{
+    width: 42%;
+    padding: 0.3vw 0.3vw;
+    border-radius:0.75vw;
+    border: solid;
+    border-color: #a0a0a0;
+    margin-left: 11.6%;
     font-size: 1vw;
 }
 
@@ -245,7 +280,7 @@ br{
     height: 2vw;
     background-color: #05b593;
     color: #fff;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 38%;
     margin-bottom: 3%;
     border: none ;
@@ -255,8 +290,6 @@ br{
 .bto-2:hover {
     background-color: #0a8169;
 }
-
-
 
 .Rectangle-3 {
     display: flex;
@@ -305,6 +338,7 @@ br{
         font-size: 6vw;
     }
     h2{
+        margin-top: 1%;
         font-size: 6vw;
     }
     .Rectangle-2{

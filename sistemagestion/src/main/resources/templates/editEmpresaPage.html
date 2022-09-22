@@ -15,8 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <link rel="stylesheet" th:href="@{/newUsuarioPage.css}">
-
+    <link rel="stylesheet" th:href="@{/newEmpresaPage.css}">
     <title>Document</title>
 </head>
 
@@ -32,42 +31,25 @@
             </ul>
         </nav>
     </header>
-    <div class="op-1">
-        <a href="#" id="menu" class="fa-solid fa-bars"></a>
-        <a th:href="@{/usuarios}" class="fa-solid fa-arrow-left" id="back"></a>
-    </div>
-    <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Usuarios</span></h2>
+    <a href="#" id="menu" class="fa-solid fa-bars"></a>
+    <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Empresas</span></h2>
     <div class="Rectangle-2">
-        <form th:action="@{/actualizarusuario}" th:object="${user}" method="post" class="form-1">
-            <p class="Text-1">Editar </span> <span style="color: #04b593;"> Usuario</span></p>
-            <br>
+        <form th:action="@{/actualizarempresa}" th:object="${emp}" method="post" class="form-1">
+            <p class="Text-1">Editar <span style="color: #04b593;"> Empresa</span></p>
             <input type="text" th:field="*{id}" class="form-control" id="id" required="required" hidden readonly>
             <label class="Text-2" for="nombre">Nombre :</label>
             <input class="Input-1" type="text" th:field="*{nombre}" id="nombre" required="required">
             <br>
-            <label class="Text-3" for="correo">Correo :</label>
-            <input class="Input-2" type="email" th:field="*{correo}" id="correo" required="required">
+            <label class="Text-3" for="telefono">Teléfono :</label>
+            <input class="Input-2" type="number" th:field="*{telefono}" id="telefono" required="required">
             <br>
-            <label class="Text-6" for="password">Contraseña :</label>
-            <input class="Input-5" type="text" th:field="*{password}" id="password" required="required">
+            <label class="Text-4" for="direccion">Direccion :</label>
+            <input class="Input-3" type="text" th:field="*{direccion}" id="direccion" required="required">
             <br>
-            <label class="Text-4" for="estado">Estado :</label>
-            <select th:field="*{estado}" class="Input-6" type="text" id="estado" required="required">
-                <option value="1">Activo</option>
-                <option value="0">Inactivo</option>
-            </select>
+            <label class="Text-5" for="nit">NIT :</label>
+            <input class="Input-4" type="text" th:field="*{nit}" id="nit" required="required">
             <br>
-            <label class="Text-4" for="rol">Rol :</label>
-            <select th:field="*{rol}" class="Input-3" type="text" id="rol" required="required">
-                <option value="ROLE_USER">Operario</option>
-                <option value="ROLE_ADMIN">Administrador</option>
-            </select>
-            <br>
-            <label class="Text-5" for="empresa">Empresa :</label>
-            <select class="Input-4" type="text" th:field="*{empresa}" id="empresa" required="required">
-                <option th:each="empresa : ${emplist}" th:text="${empresa.nombre}" th:value="${empresa.id}"></option>
-            </select>
-            <input class="bto-2" type="submit" value="Guardar usuario">
+            <input class="bto-2" type="submit" value="Guardar empresa">
         </form>
     </div>
     <footer class="Rectangle-3">
@@ -85,9 +67,9 @@
         window.onload = function(){
             var msg = [[${msg}]];
             if(msg == "updtERROR"){
-                Command : toastr["error"]("Hubo un problema al tratar de actualizar el empleado")
+                Command : toastr["error"]("Hubo un problema al tratar de actualizar la empresa")
             } else if(msg == "updtREPEAT"){
-                Command : toastr["warning"]("El empleado no pudo ser actualizado, debido a que el correo ingresado ya existe")
+                Command : toastr["warning"]("La empresa no pudo ser actualizada")
             }
 
             toastr.options = {
@@ -97,8 +79,6 @@
                 "hideMethod" : "fadeOut",
             }
         }
-
-        document.getElementById("password").type="password";
     </script>
 
 </body>
