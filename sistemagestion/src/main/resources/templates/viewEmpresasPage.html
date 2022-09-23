@@ -65,8 +65,8 @@
             <td th:text="${empresa.direccion}"></td>
             <td th:text="${empresa.telefono}"></td>
             <td th:text="${empresa.nit}"></td>
-            <td th:text="${#temporals.format(empresa.fechaCreacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
-            <td th:text="${#temporals.format(empresa.fechaActualizacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+            <td th:text="${#temporals.format(empresa.fechaCreacion, 'dd-MMM-yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(empresa.fechaActualizacion, 'dd-MMM-yyyy HH:mm')}"></td>
             <td><button class="btn-table btn-table-editar"><a th:href="@{/editarempresa/{id}(id=${empresa.id})}">Editar</a></button></td>
             <td><button class="btn-table btn-table-eliminar"><a th:href="@{/eliminarempresa/{id}(id=${empresa.id})}">Eliminar</a></button></td>
         </tr>
