@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <link rel="stylesheet" th:href="@{/newEmpresaPage.css}">
-    <title>Document</title>
+    <title>Nueva empresa</title>
 </head>
 
 <body>
     <header class="Rectangle-1">
-        <a th:href="@{/}"><img class="logo-1" src="../src/logorecortada.png" alt=""></a>
+        <a th:href="@{/}"><img class="logo-1" src="/src/logorecortada.png" alt=""></a>
         <nav>
-            <label for="touch"><span><img class="login-1" src="../src/usuarios.png" alt=""></span></label>
+            <label for="touch"><span><img class="login-1" src="/src/usuarios.png" alt=""></span></label>
             <input type="checkbox" id="touch"> 
             <ul class="slide">
                 <li class="nombreUsuario">[[${#httpServletRequest.remoteUser}]]</li>
@@ -31,7 +31,12 @@
             </ul>
         </nav>
     </header>
-    <a href="#" id="menu" class="fa-solid fa-bars"></a>
+    <div class="op-1">
+        <label class="btn-menu" for="input-icono-menu">
+            <img class="img-btn-menu" src="/src/menu-icono.png">
+        </label>
+        <a th:href="@{/empresas}" class="fa-solid fa-arrow-left" id="back"></a>
+    </div>
     <h2>Sistema de gestión de <br> <span style="color: #04b593;"> Empresas</span></h2>
     <div class="Rectangle-2">
         <form th:action="@{/guardarempresa}" th:object="${emp}" method="post" class="form-1">
@@ -52,6 +57,31 @@
             <input class="bto-2" type="submit" value="Crear empresa">
         </form>
     </div>
+
+    <!--menu lateral-->
+    <input type="checkbox" name="" id="input-icono-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a th:href="@{/empresas}">
+                    <img src="/src/empresas.png" alt="" srcset="">
+                    <h2>Empresas</h2>
+                </a>
+                <a th:href="@{/usuarios}">
+                    <img src="/src/usuariosM.png" alt="" srcset="">
+                    <h2>Usuarios</h2>
+                </a>
+                <a th:href="@{/movimientos}">
+                    <img id="img-movimiento" src="/src/dinero.png" alt="" srcset="">
+                    <h2>Ingresos <br> y Gastos</h2>
+                </a>
+            </nav>
+            <label for="input-icono-menu">
+                <img class="x-icon" src="/src/cerrar.png" alt="">
+            </label>
+        </div>
+    </div>
+
     <footer class="Rectangle-3">
         <div class="box">
             <a href="#" class="fa fa-facebook" ></a>

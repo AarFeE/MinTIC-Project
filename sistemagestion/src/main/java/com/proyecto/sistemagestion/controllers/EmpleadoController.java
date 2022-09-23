@@ -2,18 +2,18 @@ package com.proyecto.sistemagestion.controllers;
 
 import com.proyecto.sistemagestion.entities.Empleado;
 import com.proyecto.sistemagestion.entities.Empresa;
+import com.proyecto.sistemagestion.repositories.EmpleadoRepository;
 import com.proyecto.sistemagestion.services.EmpleadoService;
 import com.proyecto.sistemagestion.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -27,10 +27,17 @@ public class EmpleadoController {
     @Autowired
     EmpresaService empresaService;
 
+    @Autowired
+    EmpleadoRepository empleadoRepository;
+
     @GetMapping("/usuarios")
-    public String ViewUsuariosPage(Model model, @ModelAttribute("msg") String msg){
-        List<Empleado> listaEmpleados=empleadoService.getAllEmpleados();
-        model.addAttribute("userlist",listaEmpleados);
+    public String ViewUsuariosPage(@RequestParam(value = "page", required = false, defaultValue = "0") Integer pagenum,
+                                   @RequestParam(value = "length", required = false, defaultValue = "4") Integer lenum,
+                                   Model model, @ModelAttribute("msg") String msg){
+        Page<Empleado> empleadosPage = empleadoRepository.findAll(PageRequest.of(pagenum, lenum));
+        model.addAttribute("usuarioslist",empleadosPage.getContent());
+        model.addAttribute("pages", new Integer[empleadosPage.getTotalPages()]);
+        model.addAttribute("pagenum", pagenum);
         model.addAttribute("msg",msg);
         return "viewUsuariosPage"; //Llamamos al HTML
     }

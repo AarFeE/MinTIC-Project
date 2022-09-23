@@ -102,25 +102,178 @@ backdrop-filter: blur(1px);
     box-shadow: 0 0.26vw 0.6vw 0.2vw rgb(0 0 0 / 35%);
 }
 
+.op-1 {
+    display: flex;
+}
 
-#menu{
+.btn-menu {
+    margin: 3vh 3vw 0;
+}
+
+.img-btn-menu {
+    height: 3vw;
+    cursor: pointer;
+}
+
+#menu {
     font-size: 35px;
     margin: auto;
     text-decoration: none;
     margin-top: 1%;
     margin-left: 3%;
     color: #1f4e77;
-    display: inline-flex
+    display: inline-flex;
+}
 
+#back {
+    font-size: 2vw;
+    margin: auto;
+    text-decoration: none;
+    color: #1f4e77;
+    display: inline-flex;
+    margin-top: 3vh;
+    margin-left: 86vw;
 }
 
 h2{
     text-align: center;
     color: #a0a0a0;
-    margin-top: 0%;
+    margin-top: -3%;
+    margin-bottom: 4%;
     display: block;
     font-size: 2vw;
 }
+
+/*menu lateral*/
+
+#input-icono-menu {
+    display: none;
+}
+
+.container-menu {
+    position: fixed;
+    background: #4D8CC3 0.5;
+    width: 100%;
+    height: 99.70vh;
+    top: 15.75vh;
+    left: 0;
+    transition: all 500ms ease;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+
+#input-icono-menu:checked~.container-menu {
+    opacity: 1;
+    visibility: visible;
+
+}
+
+.cont-menu {
+    max-width: 18vw;
+    background: #1f4e77;
+    height: 80%;
+    border-right: 0.21vh solid #85C5E0;
+    border-radius: 0vh 1.60vh 1.60vh 0vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -webkit-border-radius: 0vh 1.60vh 1.60vh 0vh;
+    -moz-border-radius: 0vh 1.60vh 1.60vh 0vh;
+    -ms-border-radius: 0vh 1.60vh 1.60vh 0vh;
+    -o-border-radius: 0vh 1.60vh 1.60vh 0vh;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+}
+
+#input-icono-menu:checked~.container-menu .cont-menu {
+    transform: translateX(-0);
+    -webkit-transform: translateX(-0);
+    -moz-transform: translateX(-0);
+    -ms-transform: translateX(-0);
+    -o-transform: translateX(-0);
+}
+
+.cont-menu nav {
+    display: grid;
+    align-content: space-between;
+    /* padding-top: 5.34vh; */
+    transform: translateY(15%);
+    -webkit-transform: translateY(15%);
+    -moz-transform: translateY(15%);
+    -ms-transform: translateY(15%);
+    -o-transform: translateY(15%);
+}
+
+.cont-menu nav a {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 1vw;
+    margin: 5vh 2.67vh;
+    color: #FBFBFB;
+    border-left: 0.53vh solid transparent;
+    transition: all 400ms ease;
+    -webkit-transition: all 400ms ease;
+    -moz-transition: all 400ms ease;
+    -ms-transition: all 400ms ease;
+    -o-transition: all 400ms ease;
+    border: 0.10vh solid #04B593;
+    border-radius: 5.34vh;
+    -webkit-border-radius: 5.34vh;
+    -moz-border-radius: 5.34vh;
+    -ms-border-radius: 5.34vh;
+    -o-border-radius: 5.34vh;
+}
+
+.cont-menu nav a h2 {
+    margin: auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 1.2vw;
+    color: #FFFFFF;
+}
+
+.cont-menu nav a img {
+    height: 4vw;
+
+}
+
+.cont-menu nav a:hover {
+    border-left: 1.06vh solid whitesmoke;
+    background-color: #04B593;
+}
+
+
+
+.cont-menu label {
+    position: absolute;
+    right: 0.53vh;
+    top: 1.06vh;
+    cursor: pointer;
+}
+
+.x-icon {
+    height: 3vw;
+    margin-right: 1.06vh;
+}
+
+
+#img-movimiento {
+    margin-top: 1.60vh;
+}
+
 .Rectangle-2{
     align-self: center;
     width: 47vw;
@@ -250,8 +403,6 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: #0a8169;
 }
 
-
-
 .Rectangle-3 {
     display: flex;
     align-items: flex-end;
@@ -263,25 +414,25 @@ input[type=number]::-webkit-outer-spin-button {
     bottom: 0;
 }
 
-.Rectangle-3 .iconos{
+.Rectangle-3 .iconos {
     display: flex;
     justify-content: space-between;
     text-decoration: none;
 }
 
 
-.Rectangle-3 .box{
+.Rectangle-3 .box {
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
 }
 
-.Rectangle-3 .box a{
+.box a {
     display: flex;
     text-decoration: none;
     color: #4D8CC3;
-    font-size: 170%;
+    font-size: 1.5vw;
     margin: auto;
-    padding-left: 15% ;
+    padding-left: 15%;
     padding-right: 15%;
 }
 
