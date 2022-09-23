@@ -1,14 +1,14 @@
 package com.proyecto.sistemagestion.controllers;
 
 import com.proyecto.sistemagestion.entities.Empresa;
+import com.proyecto.sistemagestion.repositories.EmpresaRepository;
 import com.proyecto.sistemagestion.services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -19,10 +19,17 @@ public class EmpresaController {
     @Autowired
     EmpresaService empresaService;
 
+    @Autowired
+    EmpresaRepository empresaRepository;
+
     @GetMapping("/empresas")
-    public String ViewEmpresasPage(Model model, @ModelAttribute("msg") String msg){
-        List<Empresa> listaEmpresas=empresaService.getAllEmpresas();
-        model.addAttribute("emplist",listaEmpresas);
+    public String ViewEmpresasPage(@RequestParam(value = "page", required = false, defaultValue = "0") Integer pagenum,
+                                   @RequestParam(value = "length", required = false, defaultValue = "4") Integer lenum,
+                                   Model model, @ModelAttribute("msg") String msg){
+        Page<Empresa> empresasPage= empresaRepository.findAll(PageRequest.of(pagenum, lenum));
+        model.addAttribute("empresaslist",empresasPage.getContent());
+        model.addAttribute("pages", new Integer[empresasPage.getTotalPages()]);
+        model.addAttribute("pagenum", pagenum);
         model.addAttribute("msg",msg);
         return "viewEmpresasPage"; //Llamamos al HTML
     }

@@ -123,8 +123,7 @@ main{
 
   /*Dimenciones de las imagenes*/
   .imgSecciones{
-    width: 10.87vw;
-    height: 11vw;
+    height: 9.5vw;
   }
 
   /*estilo de la primera seccion de palabras*/
@@ -360,39 +359,37 @@ h2{
     border-radius: 10%;
 }
 
-
-
 .Rectangle-3 {
-  display: flex;
-  align-items: flex-end;
-  width: 100%;
-  min-height: 8%;
-  background-color: #1f4e77;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    min-height: 8%;
+    background-color: #1f4e77;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
 }
 
-.Rectangle-3 .iconos{
+.Rectangle-3 .iconos {
     display: flex;
     justify-content: space-between;
     text-decoration: none;
 }
 
 
-.Rectangle-3 .box{
+.Rectangle-3 .box {
     display: flex;
-    justify-content: space-between  ;
+    justify-content: space-between;
 }
 
-.Rectangle-3 .box a{
-  display: flex;
-  text-decoration: none;
-  color: #4D8CC3;
-  font-size: 170%;
-  margin: auto;
-  padding-left: 15% ;
-  padding-right: 15%;
+.box a {
+    display: flex;
+    text-decoration: none;
+    color: #4D8CC3;
+    font-size: 1.5vw;
+    margin: auto;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 @media (max-width: 700px){

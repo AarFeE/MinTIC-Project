@@ -5,7 +5,6 @@
     <title>Listado de movimientos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,135 +13,102 @@
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E%22%3E">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{viewMovimientosPage.css}">
+    <link rel="stylesheet" th:href="@{/viewMovimientosPage.css}">
 </head>
 <body>
-<header>
-    <section class="section-header">
-        <div id="logo-princial">
-            <span class="logo-principal"><img class="logo-principal" src="../src/logo-principal.png" alt=""></span>
-        </div>
-        <div id="logo-usuario">
-            <nav>
-                <label for="touch"><span><img class="login-1" src="../src/logo1.png" alt=""></span></label>
-                <input type="checkbox" id="touch">
-                <ul class="slide">
-                    <li class="nombreUsuario">Jhon Penon</li>
-                    <li><a href="#"><button class="salir">Salir</button></a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
-    <section class="section-nav">
-        <div class="nav">
-            <button class="btn-menu btn-menu-icono" id="boton-icono-menu">
-                <label for="input-icono-menu">
-                    <img class="img-btn-menu-icono" src="../src/menu-icono.png" alt="" id="img-icono-menu">
-                </label>
-            </button>
-            <span class="h2-main"><h2>Sistema de gestión de<span style="color: #04b593;"> ingresos y gastos</span></h2></span>
-            <button class="btn-menu" id="btn-nuevo">Nuevo</button>
-        </div>
-    </section>
+<!--Encabezado-->
+<header class="Rectangle-1">
+    <a th:href="@{/}"><img class="logo-1" src="../src/logorecortada.png" alt=""></a>
+    <!--Menu desplegable-->
+    <nav>
+        <label for="touch"><span><img class="login-1" src="../src/usuarios.png" alt=""></span></label>
+        <input type="checkbox" id="touch">
+        <ul class="slide">
+            <li class="nombreUsuario">[[${#httpServletRequest.remoteUser}]]</li>
+            <li><a th:href="@{/logout}"><button class="salir">Salir</button></a></li>
+        </ul>
+    </nav>
 </header>
-<main class="main">
-    <table class="table">
+
+<!--Iconos para ingresar a las otras secciones-->
+
+<main>
+
+    <div class="nav">
+        <label class="btn-menu" for="input-icono-menu">
+            <img class="img-btn-menu" src="../src/menu-icono.png">
+        </label>
+        <h2 class="title">Sistema de gestión de<span style="color: #04b593;"> Ingresos y Gastos</span></h2>
+        <button id="btn-nuevo" ><a th:href="@{/nuevomovimiento}">Nuevo</a></button>
+    </div>
+
+    <table class="datable">
+
         <thead>
-        <tr class="tr">
-            <th>Id</th>
+        <tr>
+            <th>ID</th>
             <th>Monto</th>
             <th>Concepto</th>
-            <th>Fecha Creación</th>
-            <th>Fecha Actualización</th>
             <th>Usuario</th>
-            <th colspan="2">&nbsp;</th>
+            <th>Creacion</th>
+            <th>Actualizacion</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
         </tr>
         </thead>
+
         <tbody>
-        <tr>
-            <th>1</th>
-            <th>Pago</th>
-            <th>100.000</th>
-            <th>01/01/01</th>
-            <th>01/01/01</th>
-            <th>Jhon sjnfljkshdfjkshajf</th>
-            <th>
-                <button class="btn-table btn-table-editar">
-                    Editar
-                </button>
-            </th>
-            <th>
-                <button class="btn-table btn-table-eliminar">
-                    Eliminar
-                </button>
-            </th>
-        </tr>
-        <tr>
-            <th>1</th>
-            <th>Pago</th>
-            <th>100.000</th>
-            <th>01/01/01</th>
-            <th>01/01/01</th>
-            <th>Jhon sadbasdjasjd</th>
-            <th>
-                <button class="btn-table btn-table-editar">
-                    Editar
-                </button>
-            </th>
-            <th>
-                <button class="btn-table btn-table-eliminar">
-                    Eliminar
-                </button>
-            </th>
-        </tr>
-        <tr>
-            <th>1</th>
-            <th>Pago</th>
-            <th>100.000</th>
-            <th>01/01/01</th>
-            <th>01/01/01</th>
-            <th>Jhon dfbsjdabfksajbdf</th>
-            <th>
-                <button class="btn-table btn-table-editar">
-                    Editar
-                </button>
-            </th>
-            <th>
-                <button class="btn-table btn-table-eliminar">
-                    Eliminar
-                </button>
-            </th>
+        <tr th:each="movement : ${movementslist}">
+            <td th:text="${movement.id}"></td>
+            <td th:text="${#numbers.formatCurrency(movement.monto)}"></td>
+            <td th:text="${movement.concepto}"></td>
+            <td th:text="${movement.usuario.correo}"></td>
+            <td th:text="${#temporals.format(movement.fechaCreacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+            <td th:text="${#temporals.format(movement.fechaActualizacion, 'dd-MMM-yyyy hh:mm:ss')}"></td>
+            <td><button class="btn-table btn-table-editar"><a th:href="@{/editarmovimiento/{id}(id=${movement.id})}">Editar</a></button></td>
+            <td><button class="btn-table btn-table-eliminar"><a th:href="@{/eliminarmovimiento/{id}(id=${movement.id})}">Eliminar</a></button></td>
         </tr>
         </tbody>
+
     </table>
+
+    <nav aria-label="Seleccion de pagina">
+        <ul class="pagination">
+            <li th:each="page, status: ${pages}">
+                <a th:href="@{/movimientos/(page=${status.index})}" th:text="${status.index}+1">1</a>
+            </li>
+        </ul>
+    </nav>
 
     <!--menu lateral-->
     <input type="checkbox" name="" id="input-icono-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="#">
+                <a th:href="@{/empresas}">
                     <img src="../src/empresas.png" alt="" srcset="">
                     <h2>Empresas</h2>
                 </a>
-                <a href="#">
+                <a th:href="@{/usuarios}">
                     <img src="../src/usuariosM.png" alt="" srcset="">
                     <h2>Usuarios</h2>
                 </a>
-                <a href="#">
+                <a th:href="@{/movimientos}">
                     <img id="img-movimiento" src="../src/dinero.png" alt="" srcset="">
                     <h2>Ingresos <br> y Gastos</h2>
                 </a>
             </nav>
-            <label for="input-icono-menu" class="icon-equis">
-                <img src="../src/cerrar.png" alt="" >
+            <label for="input-icono-menu">
+                <img class="x-icon" src="../src/cerrar.png" alt="">
             </label>
         </div>
     </div>
+
 </main>
-<footer class="">
+
+<footer class="Rectangle-3">
     <div class="box">
-        <a href="#" class="fa fa-facebook" ></a>
+        <a href="#" class="fa fa-facebook"></a>
         <a href="#" class="fa fa-github"></a>
         <a href="#" class="fa fa-whatsapp"></a>
         <a href="#" class="fa fa-youtube"></a>
@@ -150,6 +116,7 @@
         <a href="#" class="fa fa-telegram"></a>
     </div>
 </footer>
+
 <script th:inline="javascript">
     window.onload = function(){
         var msg = [[${msg}]];
