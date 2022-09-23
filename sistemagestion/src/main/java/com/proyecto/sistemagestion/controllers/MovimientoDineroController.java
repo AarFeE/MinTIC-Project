@@ -38,6 +38,8 @@ public class MovimientoDineroController {
         model.addAttribute("pages", new Integer[movementsPage.getTotalPages()]);
         model.addAttribute("pagenum", pagenum);
         model.addAttribute("msg",msg);
+        Long sumaTotal = movimientoDineroService.obtenerSumaMonto();
+        model.addAttribute("sumaMontos",sumaTotal);
         return "viewMovimientosPage"; //Llamamos al HTML
     }
 

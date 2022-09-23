@@ -80,6 +80,11 @@
         </ul>
     </nav>
 
+    <div class="suma">
+        <label class="textoSuma" for="sumaMontos">Total <span style="color: #04b593;">Movimientos</span></label>
+        <p th:text="${#numbers.formatCurrency(sumaMontos)}" class="sumaTotal" id="sumaMontos"></p>
+    </div>
+
     <!--menu lateral-->
     <input type="checkbox" name="" id="input-icono-menu">
     <div class="container-menu">

@@ -54,4 +54,8 @@ public class MovimientoDineroService {
         return movimientoRepository.findByEmpresa(id);
     }
 
+    public Long obtenerSumaMonto(){
+        return movimientoRepository.sumarMonto();
+    }
+
 }

@@ -444,6 +444,38 @@ body main table .btn-table {
     box-shadow: inset 0 -10.68vh 0 0 rgb(168, 88, 221);
 }
 
+.suma{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.textoSuma{
+    font-size: 1.2vw;
+    color: #a0a0a0;
+    font-weight: bolder;
+}
+
+
+.sumaTotal{
+    letter-spacing: 0.20vh;
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.2vw;
+    text-decoration: none;
+    color: #000000;
+    background: white;
+    border: 0.21vh solid #1daba8;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #04b593;
+    margin-right: 8vw;
+    margin-left: 1vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0.7vh 1vw;
+}
+
 /* Footer */
 
 .Rectangle-3 {
